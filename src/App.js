@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import Row from "./Row";
+import "./App.css";
+import requests from "./requests";
+import Banner from "./Banner";
+import Nav from "./Nav";
 
+const mainUrl = "https://api.themoviedb.org/3";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Nav />
+      <Banner />
+
+      <Row
+        title="NETFLIX ORIGINALS"
+        isLargeRow
+        fetchUrl={mainUrl + requests.fetchNetflixOrigin}
+      />
+      <Row title="Trending Now" fetchUrl={mainUrl + requests.fetchTrending} />
+      <Row title="Top Rated" fetchUrl={mainUrl + requests.fetchTopRated} />
+      <Row
+        title="Action Movies"
+        fetchUrl={mainUrl + requests.fetchActionMovies}
+      />
+      <Row
+        title="Comdy Movies"
+        fetchUrl={mainUrl + requests.fetchComedyMovies}
+      />
+      <Row title="Horror Now" fetchUrl={mainUrl + requests.fetchHorrorNow} />
+      <Row title="Romance Now" fetchUrl={mainUrl + requests.fetchRomanceNow} />
+      <Row
+        title="Documentaries"
+        fetchUrl={mainUrl + requests.fetchDocumentaries}
+      /> 
     </div>
   );
 }
